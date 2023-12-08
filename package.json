@@ -14,13 +14,13 @@
     "themesberg"
   ],
   "license": "MIT",
-  "homepage": "https://demo.themesberg.com/volt-react-dashboard",
+  "homepage": "https://demo.themesberg.com",
   "bugs": {
-    "url": "https://github.com/themesberg/volt-react-dashboard/issues"
+    "url": "https://github.com/themesberg/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/themesberg/volt-react-dashboard"
+    "url": "https://github.com/themesberg"
   },
   "version": "1.0.1",
   "dependencies": {
