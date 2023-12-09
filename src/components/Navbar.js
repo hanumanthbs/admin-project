@@ -82,8 +82,9 @@ export default (props) => {
                 </InputGroup>
               </Form.Group>
             </Form> */}
-
-            <h3 class="text-muted">Welcome Super Admin !!</h3>
+            <p className="text-muted fw-light mb-5 h5">
+              Welcome Super Admin !!
+            </p>
           </div>
           <Nav className="align-items-center">
             <Dropdown as={Nav.Item} onToggle={markNotificationsAsRead}>
