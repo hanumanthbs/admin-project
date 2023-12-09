@@ -38,6 +38,7 @@
     "chartist": "^0.11.4",
     "chartist-plugin-tooltips-updated": "^0.1.4",
     "moment-timezone": "^0.5.31",
+    "node-sass": "^8.0.0",
     "postcss-custom-properties": "^13.3.2",
     "react": "^18.2.0",
     "react-chartist": "^0.14.4",
@@ -48,7 +49,7 @@
     "react-live": "^2.2.3",
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.3.1",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^5.0.1",
     "react-transition-group": "^4.4.1",
     "sass": "^1.50.0",
     "simplebar-react": "^2.3.0"
