@@ -13,13 +13,6 @@ export default () => {
   return (
     <>
       <Row>
-        {/* <Col xs={12} className="mb-4 d-sm-none">
-          <SalesValueWidgetPhone
-            title="Sales Value"
-            value="10,567"
-            percentage={10.57}
-          />
-        </Col> */}
         <Col xs={12} sm={6} xl={4} className="mb-4">
           <CounterWidget
             category="Total Clients"
