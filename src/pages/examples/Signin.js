@@ -40,6 +40,17 @@ function Signin() {
       .post("https://adsy.co.in/Backend/api/Auth_Admin", temp)
       .then((res) => {
         if (res.data.status === 1) {
+          localStorage.setItem(
+            "adsyUser",
+            JSON.stringify({
+              login: true,
+              id: res.data.Id,
+              email: res.data.email,
+              token: res.data.token,
+              role: res.data.role,
+            })
+          );
+
           window.location.href = "/#/dashboard/overview";
         } else {
           alert(res.data.message);

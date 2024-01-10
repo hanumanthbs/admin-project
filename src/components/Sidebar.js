@@ -159,7 +159,7 @@ export default (props = {}) => {
                 link={Routes.ClientList.path}
               />
               <NavItem
-                title="Set Adsy Commission"
+                title="Adsy List"
                 icon={faMoneyBill}
                 // link={Routes.Transactions.path}
               />
