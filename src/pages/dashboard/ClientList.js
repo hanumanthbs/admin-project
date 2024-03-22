@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { PageTrafficTable } from "../../components/Tables";
-import DataTable from "react-data-table-component";
 import axios from "../../services/Api";
+import DataTable from "react-data-table-component";
 import { Button, Card, Modal } from "@themesberg/react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEllipsisH,
-  faUserPlus,
-  faEye,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 import ProfileCover from "../../assets/img/profile-cover.jpg";
-import Profile1 from "../../assets/img/team/profile-picture-1.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -18,8 +12,6 @@ export default () => {
   const [clientData, setClientData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [rowData, setRowData] = useState([]);
-  const [message, setMessage] = useState("");
-  const [openAlert, setOpenAlert] = useState(false);
 
   useEffect(() => {
     getClientData();
@@ -52,7 +44,6 @@ export default () => {
     { name: "Industry", selector: (row) => row.Industry, sortable: true },
     { name: "Mobile", selector: (row) => row.Mobile, sortable: true },
     { name: "Email", selector: (row) => row.Email, sortable: true },
-    // { name: "City", selector: (row) => row.City, sortable: true },
     {
       name: "Approve",
       button: true,
@@ -106,11 +97,6 @@ export default () => {
     <div className="container">
       <div>
         <Modal as={Modal.Dialog} centered show={openModal} onHide={handleClose}>
-          {/* <Modal.Header>
-            <Modal.Title className="h6">{rowData.ClientName}</Modal.Title>
-            <Button variant="close" aria-label="Close" onClick={handleClose} />
-          </Modal.Header> */}
-
           <Modal.Body>
             <Card border="light" className="text-center p-0 mb-4">
               <div

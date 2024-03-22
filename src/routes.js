@@ -46,4 +46,5 @@ export const Routes = {
   WidgetsComponent: { path: "/components/widgets" },
   UserList: { path: "/UserList" },
   ClientList: { path: "/ClientList" },
+  AdsyList: { path: "/AdsyList" },
 };

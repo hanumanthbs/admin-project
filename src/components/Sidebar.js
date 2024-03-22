@@ -161,7 +161,7 @@ export default (props = {}) => {
               <NavItem
                 title="Adsy List"
                 icon={faMoneyBill}
-                // link={Routes.Transactions.path}
+                link={Routes.AdsyList.path}
               />
               <NavItem
                 title="Earnings"

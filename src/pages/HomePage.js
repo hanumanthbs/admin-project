@@ -10,6 +10,7 @@ import ForgotPassword from "./examples/ForgotPassword";
 import ResetPassword from "./examples/ResetPassword";
 import UserList from "./dashboard/UserList";
 import ClientList from "./dashboard/ClientList";
+import AdsyList from "./dashboard/AdsyList";
 
 // components
 import Sidebar from "../components/Sidebar";
@@ -90,5 +91,6 @@ export default () => (
       path={Routes.ClientList.path}
       component={ClientList}
     />
+    <RouteWithSidebar exact path={Routes.AdsyList.path} component={AdsyList} />
   </Switch>
 );
