@@ -11,6 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, Modal } from "@themesberg/react-bootstrap";
 import ProfileCover from "../../assets/img/profile-cover.jpg";
+import { ToastContainer, toast } from "react-toastify";
 
 export default () => {
   const [data, setData] = useState([]);
@@ -25,7 +26,6 @@ export default () => {
     await axios
       .get("/api/Adsy")
       .then((res) => {
-        console.log("res.data.data", res.data.list);
         setData(res.data.list);
       })
       .catch((err) => console.error(err));
@@ -150,6 +150,31 @@ export default () => {
 
   const handleClose = () => setOpenModal(false);
 
+  const handleApprove = async (values) => {
+    const status = values.Approve === 1 ? 0 : 1;
+
+    if (
+      window.confirm(
+        values.Approve === 1
+          ? "Are you sure want to Unapprove ? "
+          : "Are you sure want to Approve ?"
+      )
+    ) {
+      await axios
+        .put("/api/AUAdsy?id=" + rowData.id + "&status=" + status)
+        .then((res) => {
+          if (res.data.status === 1) {
+            getData();
+            setOpenModal(false);
+            toast.success(res.data.message);
+          } else {
+            toast.error(res.data.message);
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  };
+
   return (
     <div className="container">
       {Object.values(rowData).length > 0 ? (
@@ -253,7 +278,17 @@ export default () => {
                     })}
                   </div>
 
-                  <div className="text-right">
+                  <div className="text-right mb-4">
+                    <Button
+                      variant={rowData.Approve === 0 ? "success" : "danger"}
+                      size="sm"
+                      onClick={() => handleApprove(rowData)}
+                    >
+                      {rowData.Approve === 0 ? "Approve" : "Unapprove"}
+                    </Button>
+                  </div>
+
+                  <div className="text-right ">
                     <Button
                       variant="link"
                       className="text-danger fw-bold ms-auto"

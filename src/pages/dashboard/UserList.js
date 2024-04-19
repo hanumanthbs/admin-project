@@ -17,7 +17,6 @@ export default () => {
       })
       .catch((err) => console.error(err));
   };
-  console.log("userData", userData);
 
   const customStyles = {
     headCells: {
