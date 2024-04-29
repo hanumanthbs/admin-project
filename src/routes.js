@@ -47,4 +47,5 @@ export const Routes = {
   UserList: { path: "/UserList" },
   ClientList: { path: "/ClientList" },
   AdsyList: { path: "/AdsyList" },
+  WithdrawRequest: { path: "/WithdrawRequest" },
 };

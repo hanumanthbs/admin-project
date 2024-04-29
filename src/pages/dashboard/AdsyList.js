@@ -12,6 +12,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Card, Modal } from "@themesberg/react-bootstrap";
 import ProfileCover from "../../assets/img/profile-cover.jpg";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 
 export default () => {
   const [data, setData] = useState([]);
@@ -220,7 +222,8 @@ export default () => {
                     {rowData.Templates.map((obj, i) => {
                       return (
                         <div key={i}>
-                          {obj.TemplateType === 1 && obj.QuestionType === 1 ? (
+                          {obj.TemplateType === 1 &&
+                          (obj.QuestionType === 1 || obj.QuestionType === 2) ? (
                             <>
                               <div className="fw-bold ">
                                 {i + 1 + ". " + obj.Question}
@@ -230,14 +233,12 @@ export default () => {
                               })}
                             </>
                           ) : obj.TemplateType === 1 &&
-                            obj.QuestionType === 2 ? (
+                            (obj.QuestionType === 3 ||
+                              obj.QuestionType === 4) ? (
                             <>
                               <div className="fw-bold ">
                                 {i + 1 + ". " + obj.Question}
                               </div>
-                              {obj.Choices.map((val, j) => {
-                                return <div>{j + 1 + "." + val}</div>;
-                              })}
                             </>
                           ) : obj.TemplateType === 2 ? (
                             <>
@@ -245,12 +246,17 @@ export default () => {
                                 {i + 1 + ". " + obj.Question}
                               </div>
                               <div className="text-center">
-                                <FontAwesomeIcon
+                                {/* <FontAwesomeIcon
                                   icon={faVideo}
                                   className="icon-dark text-success"
                                   style={{ cursor: "pointer", fontSize: "2em" }}
                                   onClick={() => window.open(obj.URL)}
                                   title="Click to watch"
+                                /> */}
+                                <iframe
+                                  src={obj.URL}
+                                  width="600"
+                                  height="400"
                                 />
                               </div>
                             </>
@@ -260,13 +266,15 @@ export default () => {
                                 {i + 1 + ". " + obj.Question}
                               </div>
                               <div className="text-center">
-                                <FontAwesomeIcon
+                                {/* <FontAwesomeIcon
                                   icon={faImage}
                                   className="icon-dark text-success"
                                   style={{ cursor: "pointer", fontSize: "2em" }}
                                   onClick={() => window.open(obj.URL)}
                                   title="Click to view"
-                                />
+                                /> */}
+
+                                <img src={obj.URL} width="400" height="300" />
                               </div>
                             </>
                           ) : (

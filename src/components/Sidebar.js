@@ -163,10 +163,15 @@ export default (props = {}) => {
                 icon={faMoneyBill}
                 link={Routes.AdsyList.path}
               />
-              <NavItem
+              {/* <NavItem
                 title="Earnings"
                 icon={faMoneyBillAlt}
                 // link={Routes.Transactions.path}
+              /> */}
+              <NavItem
+                title="Withdraw Request"
+                icon={faMoneyBillAlt}
+                link={Routes.WithdrawRequest.path}
               />
               <NavItem title="Logout" icon={faSignOutAlt} link={"/"} />
             </Nav>

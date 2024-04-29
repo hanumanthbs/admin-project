@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "../../services/Api";
 import { Col, Row } from "@themesberg/react-bootstrap";
 import { CounterWidget, SalesValueWidgetPhone } from "../../components/Widgets";
 import {
@@ -10,6 +11,21 @@ import {
 import adsy from "../../assets/img/adsy-logo.jpg";
 
 export default () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    await axios
+      .get("/api/AdminDashboard")
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <>
       <Row>
@@ -18,7 +34,7 @@ export default () => {
             category="Total Clients"
             // title="345k"
             // period="Feb 1 - Apr 1"
-            percentage={100}
+            percentage={data.TotalClient}
             icon={faUser}
             // iconColor="shape-secondary"
           />
@@ -29,7 +45,7 @@ export default () => {
             category="Total Users"
             // title="$43,594"
             // period="Feb 1 - Apr 1"
-            percentage={200}
+            percentage={data.TotalUsers}
             icon={faUsers}
             // iconColor="shape-tertiary"
           />
@@ -40,7 +56,7 @@ export default () => {
             category="Total Adsy"
             // title="$43,594"
             // period="Feb 1 - Apr 1"
-            percentage={50}
+            percentage={data.TotalAdsy}
             icon={faUserTie}
             // iconColor="shape-tertiary"
           />
@@ -51,7 +67,7 @@ export default () => {
             category="Total Money Earned"
             // title="$43,594"
             // period="Feb 1 - Apr 1"
-            percentage={100000}
+            percentage={data.TotalEarnings}
             icon={faMoneyBill}
             // iconColor="shape-tertiary"
           />

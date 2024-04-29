@@ -11,6 +11,7 @@ import ResetPassword from "./examples/ResetPassword";
 import UserList from "./dashboard/UserList";
 import ClientList from "./dashboard/ClientList";
 import AdsyList from "./dashboard/AdsyList";
+import WithdrawRequest from "./dashboard/WithdrawRequest";
 
 // components
 import Sidebar from "../components/Sidebar";
@@ -92,5 +93,10 @@ export default () => (
       component={ClientList}
     />
     <RouteWithSidebar exact path={Routes.AdsyList.path} component={AdsyList} />
+    <RouteWithSidebar
+      exact
+      path={Routes.WithdrawRequest.path}
+      component={WithdrawRequest}
+    />
   </Switch>
 );
