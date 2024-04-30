@@ -104,21 +104,21 @@ export default () => {
             className="icon-dark text-info"
             style={{ cursor: "pointer", fontSize: "1.5em", marginRight: "5px" }}
             title="Pending"
-            onClick={() => handleChangeStatus(row.status, row.id)}
+            onClick={() => handleChangeStatus("0", row.id)}
           />
           <FontAwesomeIcon
             icon={faSpinner}
             className="icon-dark text-warning"
             style={{ cursor: "pointer", fontSize: "1.5em", marginRight: "5px" }}
             title="Processing"
-            onClick={() => handleChangeStatus(row.status, row.id)}
+            onClick={() => handleChangeStatus("1", row.id)}
           />
           <FontAwesomeIcon
             icon={faCheckCircle}
             className="icon-dark text-success"
             style={{ cursor: "pointer", fontSize: "1.5em" }}
             title="Completed"
-            onClick={() => handleChangeStatus(row.status, row.id)}
+            onClick={() => handleChangeStatus("2", row.id)}
           />
         </div>
       ),
