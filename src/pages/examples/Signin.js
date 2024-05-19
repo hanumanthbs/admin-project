@@ -131,7 +131,7 @@ function Signin() {
                         </FormCheck.Label>
                       </Form.Check>
                       <Card.Link className="small text-end">
-                        Forgot password?
+                        {/* Forgot password? */}
                       </Card.Link>
                     </div>
                   </Form.Group>
