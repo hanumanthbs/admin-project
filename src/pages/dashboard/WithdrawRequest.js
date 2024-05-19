@@ -22,7 +22,11 @@ export default () => {
       .then((res) => {
         setData(res.data.list);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        localStorage.setItem("adsyUser", null);
+        toast.error("Session Expired !!");
+        window.location.href = "/Login";
+      });
   };
 
   const handleChangeStatus = async (value, id) => {
@@ -37,8 +41,16 @@ export default () => {
             toast.error(res.data.message);
           }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          localStorage.setItem("adsyUser", null);
+          toast.error("Session Expired !!");
+          window.location.href = "/Login";
+        });
     }
+  };
+
+  const CustomDiv = ({ children }) => {
+    return <div style={{ whiteSpace: "wrap" }}>{children}</div>;
   };
 
   const columns = [
@@ -50,37 +62,37 @@ export default () => {
     },
     {
       name: "Name",
-      selector: (row) => row.FullName,
+      selector: (row) => <CustomDiv>{row.FullName}</CustomDiv>,
       sortable: true,
     },
     {
       name: "Amount",
-      selector: (row) => row.Amount,
+      selector: (row) => <CustomDiv>{row.Amount}</CustomDiv>,
       sortable: true,
     },
     {
       name: "Account Number",
-      selector: (row) => row.AccountNo,
+      selector: (row) => <CustomDiv>{row.AccountNo}</CustomDiv>,
       sortable: true,
     },
     {
       name: "Bank",
-      selector: (row) => row.Bank,
+      selector: (row) => <CustomDiv>{row.Bank}</CustomDiv>,
       sortable: true,
     },
     {
       name: "Branch",
-      selector: (row) => row.Branch,
+      selector: (row) => <CustomDiv>{row.Branch}</CustomDiv>,
       sortable: true,
     },
     {
       name: "IFSC Code",
-      selector: (row) => row.IFSCCode,
+      selector: (row) => <CustomDiv>{row.IFSCCode}</CustomDiv>,
       sortable: true,
     },
     {
       name: "Date Time",
-      selector: (row) => row.DateTime,
+      selector: (row) => <CustomDiv>{row.DateTime}</CustomDiv>,
       sortable: true,
     },
     {

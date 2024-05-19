@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../services/Api";
 import DataTable from "react-data-table-component";
+import { ToastContainer, toast } from "react-toastify";
 
 export default () => {
   const [userData, setUserData] = useState([]);
@@ -15,13 +16,21 @@ export default () => {
       .then((res) => {
         setUserData(res.data.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        localStorage.setItem("adsyUser", null);
+        toast.error("Session Expired !!");
+        window.location.href = "/Login";
+      });
   };
 
   const customStyles = {
     headCells: {
       style: { fontWeight: "bold" },
     },
+  };
+
+  const CustomDiv = ({ children }) => {
+    return <div style={{ whiteSpace: "wrap" }}>{children}</div>;
   };
 
   const columns = [
@@ -39,19 +48,39 @@ export default () => {
       ),
       sortable: true,
     },
-    { name: "Name", selector: (row) => row.Name, sortable: true },
-    { name: "Email", selector: (row) => row.Email, sortable: true },
-    { name: "Mobile", selector: (row) => row.Mobile, sortable: true },
-    { name: "Password", selector: (row) => row.Password, sortable: true },
-    { name: "City", selector: (row) => row.City, sortable: true },
+    {
+      name: "Name",
+      selector: (row) => <CustomDiv>{row.Name}</CustomDiv>,
+      sortable: true,
+    },
+    {
+      name: "Email",
+      selector: (row) => <CustomDiv>{row.Email}</CustomDiv>,
+      sortable: true,
+    },
+    {
+      name: "Mobile",
+      selector: (row) => <CustomDiv>{row.Mobile}</CustomDiv>,
+      sortable: true,
+    },
+    {
+      name: "Password",
+      selector: (row) => <CustomDiv>{row.Password}</CustomDiv>,
+      sortable: true,
+    },
+    {
+      name: "City",
+      selector: (row) => <CustomDiv>{row.City}</CustomDiv>,
+      sortable: true,
+    },
     {
       name: "Completed Adsy",
-      selector: (row) => row.CompletedAdsy,
+      selector: (row) => <CustomDiv>{row.CompletedAdsy}</CustomDiv>,
       sortable: true,
     },
     {
       name: "Total Earning",
-      selector: (row) => row.TotalEarning,
+      selector: (row) => <CustomDiv>{row.TotalEarning}</CustomDiv>,
       sortable: true,
     },
   ];
@@ -64,6 +93,8 @@ export default () => {
         pagination
         customStyles={customStyles}
       ></DataTable>
+
+      <ToastContainer />
     </div>
   );
 };

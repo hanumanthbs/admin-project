@@ -14,6 +14,7 @@ import {
 } from "@themesberg/react-bootstrap";
 import BgImage from "../../assets/img/illustrations/signin.svg";
 import adsyLogo from "../../assets/img/adsy-logo.jpg";
+import { ToastContainer, toast } from "react-toastify";
 
 const initialValues = {
   email: "",
@@ -56,11 +57,17 @@ function Signin() {
           alert(res.data.message);
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        localStorage.setItem("AdsyUser", null);
+        toast.error("Session Expired !!");
+        window.location.href = "/Login";
+      });
   }
 
   return (
     <main>
+      <ToastContainer />
+
       <section className="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
         <Container>
           <Row

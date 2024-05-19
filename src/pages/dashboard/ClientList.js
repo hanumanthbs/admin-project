@@ -23,13 +23,21 @@ export default () => {
       .then((res) => {
         setClientData(res.data.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        localStorage.setItem("adsyUser", null);
+        toast.error("Session Expired !!");
+        window.location.href = "/Login";
+      });
   };
 
   const customStyles = {
     headCells: {
       style: { fontWeight: "bold" },
     },
+  };
+
+  const CustomDiv = ({ children }) => {
+    return <div style={{ whiteSpace: "wrap" }}>{children}</div>;
   };
 
   const columns = [
@@ -39,11 +47,31 @@ export default () => {
       sortable: true,
       width: "60px",
     },
-    { name: "Client", selector: (row) => row.ClientName, sortable: true },
-    { name: "Business", selector: (row) => row.BussinessName, sortable: true },
-    { name: "Industry", selector: (row) => row.Industry, sortable: true },
-    { name: "Mobile", selector: (row) => row.Mobile, sortable: true },
-    { name: "Email", selector: (row) => row.Email, sortable: true },
+    {
+      name: "Client",
+      selector: (row) => <CustomDiv>{row.ClientName}</CustomDiv>,
+      sortable: true,
+    },
+    {
+      name: "Business",
+      selector: (row) => <CustomDiv>{row.BussinessName}</CustomDiv>,
+      sortable: true,
+    },
+    {
+      name: "Industry",
+      selector: (row) => <CustomDiv>{row.Industry}</CustomDiv>,
+      sortable: true,
+    },
+    {
+      name: "Mobile",
+      selector: (row) => <CustomDiv>{row.Mobile}</CustomDiv>,
+      sortable: true,
+    },
+    {
+      name: "Email",
+      selector: (row) => <CustomDiv>{row.Email}</CustomDiv>,
+      sortable: true,
+    },
     {
       name: "Approve",
       button: true,
@@ -89,7 +117,11 @@ export default () => {
             toast.error(res.data.message);
           }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          localStorage.setItem("adsyUser", null);
+          toast.error("Session Expired !!");
+          window.location.href = "/Login";
+        });
     }
   };
 
@@ -174,6 +206,7 @@ export default () => {
         columns={columns}
         data={clientData}
         pagination
+        wrap={true}
         customStyles={customStyles}
       ></DataTable>
     </div>

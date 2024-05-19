@@ -65,6 +65,7 @@ export default (props) => {
   };
 
   const handleLogout = () => {
+    localStorage.setItem("adsyUser", null);
     window.location.href = "/";
   };
   return (
@@ -82,9 +83,9 @@ export default (props) => {
                 </InputGroup>
               </Form.Group>
             </Form> */}
-            <p className="text-muted fw-light mb-5 h5">
+            {/* <p className="text-muted fw-light mb-5 h5">
               Welcome Super Admin !!
-            </p>
+            </p> */}
           </div>
           <Nav className="align-items-center">
             <Dropdown as={Nav.Item} onToggle={markNotificationsAsRead}>
@@ -93,7 +94,7 @@ export default (props) => {
                 className="text-dark icon-notifications me-lg-3"
               >
                 <span className="icon icon-sm">
-                  <FontAwesomeIcon icon={faBell} className="bell-shake" />
+                  {/* <FontAwesomeIcon icon={faBell} className="bell-shake" /> */}
                   {/* {areNotificationsRead ? null : (
                     <span className="icon-badge rounded-circle unread-notifications" />
                   )} */}
@@ -132,7 +133,7 @@ export default (props) => {
                 </div>
               </Dropdown.Toggle>
               <Dropdown.Menu className="user-dropdown dropdown-menu-right mt-2">
-                <Dropdown.Item className="fw-bold">
+                {/* <Dropdown.Item className="fw-bold">
                   <FontAwesomeIcon icon={faUserCircle} className="me-2" /> My
                   Profile
                 </Dropdown.Item>
@@ -146,7 +147,7 @@ export default (props) => {
                 <Dropdown.Item className="fw-bold">
                   <FontAwesomeIcon icon={faUserShield} className="me-2" />{" "}
                   Support
-                </Dropdown.Item>
+                </Dropdown.Item> */}
 
                 <Dropdown.Divider />
 

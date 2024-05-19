@@ -30,7 +30,15 @@ export default () => {
       .then((res) => {
         setData(res.data.list);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        localStorage.setItem("adsyUser", null);
+        toast.error("Session Expired !!");
+        window.location.href = "/Login";
+      });
+  };
+
+  const CustomDiv = ({ children }) => {
+    return <div style={{ whiteSpace: "wrap" }}>{children}</div>;
   };
 
   const columns = [
@@ -42,22 +50,22 @@ export default () => {
     },
     {
       name: "Title",
-      selector: (row) => row.Title,
+      selector: (row) => <CustomDiv>{row.Title}</CustomDiv>,
       sortable: true,
     },
     {
       name: "Client",
-      selector: (row) => row.ClientData.ClientName,
+      selector: (row) => <CustomDiv>{row.ClientData.ClientName}</CustomDiv>,
       sortable: true,
     },
     {
       name: "No Of Users",
-      selector: (row) => row.NoUsers,
+      selector: (row) => <CustomDiv>{row.NoUsers}</CustomDiv>,
       sortable: true,
     },
     {
       name: "Amount",
-      selector: (row) => row.Amount,
+      selector: (row) => <CustomDiv>{row.Amount}</CustomDiv>,
       sortable: true,
     },
     {
@@ -173,7 +181,11 @@ export default () => {
             toast.error(res.data.message);
           }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          localStorage.setItem("adsyUser", null);
+          toast.error("Session Expired !!");
+          window.location.href = "/Login";
+        });
     }
   };
 
@@ -314,6 +326,8 @@ export default () => {
       ) : (
         <></>
       )}
+
+      <ToastContainer />
 
       <DataTable
         columns={columns}
